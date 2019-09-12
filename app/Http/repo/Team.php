@@ -1,18 +1,29 @@
 <?php
 namespace App\Http\repo;
+use App\Models\Teams;
 
 class Team {
 
+  private $TeamModel;
 
-  public function getTeam($team_id) {
+  public function __construct(Teams $obj)
+  {
+    $this->TeamModel = $obj;
+  }
+
+  public function getTeam($team_id) 
+  {
+    $team_details = array();
     if(isset($team_id))
     {
-      return [1];
+      $team_details = $this->TeamModel->getTeam($team_id);
     }
     else
     {
-      return [1,2,3]
+      $team_details = $this->TeamModel->getAllTeams();
     }
+
+    return $team_details;
   }
 
 }

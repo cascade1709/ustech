@@ -15,4 +15,6 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/team[/{id}]', 'TeamController@getTeam');
+$router->get('team', 'TeamController@getTeam');
+
+$router->get('players/getTeamPlayers/{team_id}', 'PlayerController@getTeamPlayers');
